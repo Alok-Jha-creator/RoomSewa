@@ -1,0 +1,315 @@
+/* ============================================
+   GALAXY FUTURISTIC FILTER - ULTRA DESIGN
+   ============================================ */
+
+   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+   :root {
+     --neon-cyan: #00f5ff;
+     --neon-purple: #bf00ff;
+     --neon-pink: #ff0090;
+     --neon-green: #00ff88;
+     --dark-void: #020408;
+     --dark-space: #050d1a;
+     --glass-bg: rgba(0, 245, 255, 0.03);
+     --glass-border: rgba(0, 245, 255, 0.15);
+     --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.5), 0 0 60px rgba(0, 245, 255, 0.2);
+     --glow-purple: 0 0 20px rgba(191, 0, 255, 0.5), 0 0 60px rgba(191, 0, 255, 0.2);
+     --glow-green: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 60px rgba(0, 255, 136, 0.2);
+   }
+   
+   /* ─── FILTER WRAPPER ─── */
+   .filter {
+     font-family: 'Rajdhani', sans-serif;
+     background: linear-gradient(
+       135deg,
+       rgba(0, 245, 255, 0.04) 0%,
+       rgba(2, 4, 8, 0.92) 50%,
+       rgba(191, 0, 255, 0.04) 100%
+     );
+     backdrop-filter: blur(24px) saturate(180%);
+     -webkit-backdrop-filter: blur(24px) saturate(180%);
+     border: 1px solid rgba(0, 245, 255, 0.15);
+     border-radius: 6px;
+     padding: 1.75rem;
+     position: relative;
+     overflow: hidden;
+     box-shadow:
+       0 0 40px rgba(0, 0, 0, 0.6),
+       inset 0 1px 0 rgba(255, 255, 255, 0.05);
+   }
+   
+   /* ─── ANIMATED TOP LINE ─── */
+   .filter::before {
+     content: '';
+     position: absolute;
+     top: 0; left: 0; right: 0;
+     height: 1px;
+     background: linear-gradient(
+       90deg,
+       transparent 0%,
+       var(--neon-cyan) 30%,
+       var(--neon-purple) 70%,
+       transparent 100%
+     );
+     background-size: 200% 100%;
+     animation: scanLine 4s linear infinite;
+   }
+   
+   /* ─── SCANLINE TEXTURE ─── */
+   .filter::after {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: repeating-linear-gradient(
+       0deg,
+       transparent,
+       transparent 2px,
+       rgba(0, 245, 255, 0.012) 2px,
+       rgba(0, 245, 255, 0.012) 4px
+     );
+     pointer-events: none;
+     z-index: 0;
+   }
+   
+   @keyframes scanLine {
+     0%   { background-position: -100% 0; }
+     100% { background-position: 200% 0; }
+   }
+   
+   /* Corner brackets */
+   .filter-corner {
+     position: absolute;
+     width: 16px;
+     height: 16px;
+   }
+   
+   .filter-corner.tl { top: 8px; left: 8px; border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan); }
+   .filter-corner.tr { top: 8px; right: 8px; border-top: 2px solid var(--neon-purple); border-right: 2px solid var(--neon-purple); }
+   .filter-corner.bl { bottom: 8px; left: 8px; border-bottom: 2px solid var(--neon-purple); border-left: 2px solid var(--neon-purple); }
+   .filter-corner.br { bottom: 8px; right: 8px; border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); }
+   
+   /* ─── HEADING ─── */
+   .filter-heading {
+     position: relative;
+     z-index: 1;
+     display: flex;
+     align-items: center;
+     gap: 0.6rem;
+     margin: 0 0 1.75rem 0;
+     padding-bottom: 1rem;
+     border-bottom: 1px solid rgba(0, 245, 255, 0.12);
+   }
+   
+   .filter-heading-icon {
+     font-size: 1.1rem;
+     filter: drop-shadow(0 0 6px var(--neon-cyan));
+   }
+   
+   .filter-heading-text {
+     font-family: 'Orbitron', monospace;
+     font-size: 0.85rem;
+     font-weight: 700;
+     letter-spacing: 0.2em;
+     text-transform: uppercase;
+     background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+     filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.4));
+   }
+   
+   /* ─── FILTER FORM ─── */
+   .filter form {
+     position: relative;
+     z-index: 1;
+   }
+   
+   /* ─── FILTER GROUP ─── */
+   .filter-group {
+     margin-bottom: 1.4rem;
+   }
+   
+   .filter-group label {
+     display: flex;
+     align-items: center;
+     gap: 0.4rem;
+     margin-bottom: 0.6rem;
+     font-family: 'Rajdhani', sans-serif;
+     font-size: 0.78rem;
+     font-weight: 600;
+     letter-spacing: 0.2em;
+     text-transform: uppercase;
+     color: rgba(0, 245, 255, 0.6);
+   }
+   
+   /* ─── INPUTS & SELECTS ─── */
+   .filter-group input,
+   .filter-group select {
+     width: 100%;
+     padding: 0.7rem 1rem;
+     font-family: 'Rajdhani', sans-serif;
+     font-size: 0.95rem;
+     font-weight: 500;
+     letter-spacing: 0.05em;
+     color: rgba(200, 230, 255, 0.9);
+     background: rgba(0, 245, 255, 0.04);
+     border: 1px solid rgba(0, 245, 255, 0.18);
+     border-radius: 3px;
+     outline: none;
+     transition: all 0.3s ease;
+     appearance: none;
+     -webkit-appearance: none;
+     box-sizing: border-box;
+   }
+   
+   .filter-group input::placeholder {
+     color: rgba(0, 245, 255, 0.25);
+     letter-spacing: 0.05em;
+   }
+   
+   .filter-group input:focus,
+   .filter-group select:focus {
+     border-color: var(--neon-cyan);
+     background: rgba(0, 245, 255, 0.08);
+     box-shadow: var(--glow-cyan), inset 0 0 15px rgba(0, 245, 255, 0.04);
+     color: var(--neon-cyan);
+   }
+   
+   /* Custom select arrow */
+   .select-wrap {
+     position: relative;
+   }
+   
+   .select-wrap::after {
+     content: '⌄';
+     position: absolute;
+     right: 1rem;
+     top: 50%;
+     transform: translateY(-50%);
+     color: rgba(0, 245, 255, 0.5);
+     pointer-events: none;
+     font-size: 1rem;
+   }
+   
+   .select-wrap select {
+     cursor: pointer;
+   }
+   
+   .select-wrap select option {
+     background: #050d1a;
+     color: rgba(200, 230, 255, 0.9);
+   }
+   
+   /* ─── PRICE INPUTS ─── */
+   .price-inputs {
+     display: flex;
+     align-items: center;
+     gap: 0.6rem;
+   }
+   
+   .price-inputs input {
+     width: calc(50% - 0.6rem);
+   }
+   
+   .price-separator {
+     color: rgba(0, 245, 255, 0.4);
+     font-family: 'Orbitron', monospace;
+     font-size: 0.9rem;
+     flex-shrink: 0;
+   }
+   
+   /* ─── FILTER BUTTONS ─── */
+   .filter-buttons {
+     display: flex;
+     gap: 0.75rem;
+     margin-top: 1.5rem;
+     position: relative;
+     z-index: 1;
+   }
+   
+   /* Apply Button */
+   .btn-apply {
+     flex: 1;
+     padding: 0rem;
+     font-family: 'Orbitron', monospace;
+     font-size: 0.62rem;
+     font-weight: 500;
+     letter-spacing: 0.2em;
+     text-transform: uppercase;
+     color: #fff;
+     background: linear-gradient(
+       135deg,
+       rgba(0, 255, 136, 0.2),
+       rgba(0, 245, 255, 0.2)
+     );
+     border: 1px solid rgba(0, 255, 136, 0.4);
+     border-radius: 3px;
+     cursor: pointer;
+     position: relative;
+     overflow: hidden;
+     transition: all 0.3s ease;
+   }
+   
+   .btn-apply::before {
+     content: '';
+     position: absolute;
+     top: 0; left: -100%;
+     width: 100%; height: 100%;
+     background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+     transition: left 0.5s;
+   }
+   
+   .btn-apply:hover {
+     background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 245, 255, 0.3));
+     border-color: var(--neon-green);
+     box-shadow: var(--glow-green);
+     transform: translateY(-2px);
+     text-shadow: 0 0 10px var(--neon-green);
+     color: var(--neon-green);
+   }
+   
+   .btn-apply:hover::before {
+     left: 100%;
+   }
+   
+   /* Reset Button */
+   .btn-reset {
+     flex: 1;
+     padding: 0rem;
+     font-family: 'Rajdhani', sans-serif;
+     font-size: 1.2rem;
+     font-weight: 600;
+     letter-spacing: 0em;
+     text-transform: uppercase;
+     color: rgba(191, 0, 255, 0.7);
+     background: rgba(191, 0, 255, 0.05);
+     border: 1px solid rgba(191, 0, 255, 0.25);
+     border-radius: 3px;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .btn-reset::before {
+     content: '';
+     position: absolute;
+     top: 0; left: -100%;
+     width: 100%; height: 100%;
+     background: linear-gradient(90deg, transparent, rgba(191, 0, 255, 0.15), transparent);
+     transition: left 0.5s;
+   }
+   
+   .btn-reset:hover {
+     background: rgba(191, 0, 255, 0.1);
+     border-color: var(--neon-purple);
+     box-shadow: var(--glow-purple);
+     color: var(--neon-purple);
+     transform: translateY(-2px);
+     text-shadow: 0 0 10px var(--neon-purple);
+   }
+   
+   .btn-reset:hover::before {
+     left: 100%;
+   }

@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+.searchbar-galaxy {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.searchbar-fields {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.sb-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.1rem;
+  background: rgba(0, 8, 20, 0.9);
+  border: 1.5px solid rgba(0, 245, 255, 0.6);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative; /* ← Important for dropdown positioning */
+  overflow: visible; /* ← Changed from hidden */
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.4), 0 0 20px rgba(0, 245, 255, 0.15);
+}
+
+.sb-field:focus-within {
+  border-color: rgba(191, 0, 255, 0.9);
+  box-shadow: 0 0 12px rgba(191, 0, 255, 0.6), 0 0 35px rgba(191, 0, 255, 0.25);
+}
+
+.sb-icon {
+  font-size: 1rem;
+  color: rgba(0, 245, 255, 0.7);
+  text-shadow: 0 0 8px rgba(0, 245, 255, 0.8);
+  flex-shrink: 0;
+}
+
+.sb-arrow {
+  font-size: 0.6rem;
+  color: rgba(0, 245, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.sb-field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(220, 240, 255, 0.95);
+  min-width: 0;
+  cursor: pointer;
+}
+
+.sb-field input::placeholder {
+  color: rgba(0, 245, 255, 0.45);
+}
+
+/* ══════════════════════════════
+   DROPDOWN - FIXED VERSION
+══════════════════════════════ */
+.sb-dropdown {
+  position: fixed; /* ← Changed from absolute */
+  top: auto; /* ← Let JS calculate position */
+  left: auto;
+  right: auto;
+  background: rgba(2, 8, 20, 0.98);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 4px;
+  z-index: 99999; /* ← Even higher */
+  max-height: 350px; /* ← More height */
+  min-width: 280px; /* ← Minimum width */
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  box-shadow: 
+    0 0 20px rgba(0, 245, 255, 0.15), 
+    0 10px 40px rgba(0, 0, 0, 0.9),
+    0 0 100px rgba(0, 245, 255, 0.2); /* ← Extra glow */
+  animation: dropdownOpen 0.2s ease forwards;
+}
+
+/* ── Custom Scrollbar ── */
+.sb-dropdown::-webkit-scrollbar { 
+  width: 6px; /* ← Wider for easier grabbing */
+}
+
+.sb-dropdown::-webkit-scrollbar-track { 
+  background: rgba(0, 8, 20, 0.5);
+  border-radius: 3px;
+}
+
+.sb-dropdown::-webkit-scrollbar-thumb { 
+  background: rgba(0, 245, 255, 0.6); /* ← Brighter */
+  border-radius: 3px;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.sb-dropdown::-webkit-scrollbar-thumb:hover { 
+  background: rgba(0, 245, 255, 0.9);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
+}
+
+/* Firefox scrollbar */
+.sb-dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 245, 255, 0.6) rgba(0, 8, 20, 0.5);
+}
+
+@keyframes dropdownOpen {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sb-dropdown-item {
+  padding: 0.85rem 1rem; /* ← Slightly more padding */
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem; /* ← Slightly larger */
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(180, 220, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.05);
+  white-space: nowrap; /* ← Prevent text wrapping */
+}
+
+.sb-dropdown-item:last-child { 
+  border-bottom: none; 
+}
+
+.sb-dropdown-item:hover {
+  background: rgba(0, 245, 255, 0.12); /* ← Brighter hover */
+  color: #00f5ff;
+  text-shadow: 0 0 8px rgba(0, 245, 255, 0.6);
+  padding-left: 1.3rem;
+}
+
+.sb-dropdown-item.active {
+  color: #00f5ff;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.7);
+  background: rgba(0, 245, 255, 0.1);
+  border-left: 3px solid #00f5ff; /* ← Active indicator */
+}
+
+.sb-dropdown-item.sb-all {
+  color: rgba(0, 245, 255, 0.5);
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.2); /* ← More visible */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ── BUTTON ── */
+.sb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #00f5ff;
+  background: rgba(0, 8, 20, 0.9);
+  border: 1.5px solid rgba(0, 245, 255, 0.6);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.4), 0 0 20px rgba(0, 245, 255, 0.15);
+}
+
+.sb-btn:hover {
+  border-color: rgba(0, 255, 136, 0.8);
+  color: #00ff88;
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.6), 0 0 35px rgba(0, 255, 136, 0.25);
+}
+
+.sb-btn.scanning {
+  border-color: rgba(255, 0, 144, 0.8);
+  color: #ff0090;
+  animation: btnPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes btnPulse {
+  from { box-shadow: 0 0 10px rgba(255, 0, 144, 0.5); }
+  to   { box-shadow: 0 0 20px rgba(255, 0, 144, 0.8), 0 0 50px rgba(255, 0, 144, 0.4); }
+}
+
+.sb-btn span { position: relative; z-index: 1; }
+.sb-btn-icon { font-size: 1rem; }
+
+/* Corner brackets */
+.sb-corner {
+  position: absolute;
+  width: 10px; 
+  height: 10px;
+}
+
+.sb-corner.tl { 
+  top: -4px; 
+  left: -4px; 
+  border-top: 2px solid #00f5ff; 
+  border-left: 2px solid #00f5ff; 
+}
+
+.sb-corner.tr { 
+  top: -4px; 
+  right: -4px; 
+  border-top: 2px solid #bf00ff; 
+  border-right: 2px solid #bf00ff; 
+}
+
+.sb-corner.bl { 
+  bottom: -4px; 
+  left: -4px; 
+  border-bottom: 2px solid #bf00ff; 
+  border-left: 2px solid #bf00ff; 
+}
+
+.sb-corner.br { 
+  bottom: -4px; 
+  right: -4px; 
+  border-bottom: 2px solid #00f5ff; 
+  border-right: 2px solid #00f5ff; 
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .searchbar-fields { 
+    flex-direction: column; 
+  }
+  
+  .sb-btn { 
+    width: 100%; 
+    justify-content: center; 
+  }
+  
+  .sb-dropdown {
+    max-height: 250px; /* ← Slightly smaller on mobile */
+  }
+}

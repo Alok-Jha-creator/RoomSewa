@@ -1,0 +1,505 @@
+/* ============================================
+   GALAXY FUTURISTIC NAVBAR - ULTRA DESIGN
+   ============================================ */
+
+   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+   :root {
+     --neon-cyan: #00f5ff;
+     --neon-purple: #bf00ff;
+     --neon-pink: #ff0090;
+     --neon-blue: #0066ff;
+     --dark-void: #020408;
+     --dark-space: #050d1a;
+     --star-white: rgba(255, 255, 255, 0.9);
+     --glass-bg: rgba(0, 245, 255, 0.03);
+     --glass-border: rgba(0, 245, 255, 0.15);
+     --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.5), 0 0 60px rgba(0, 245, 255, 0.2);
+     --glow-purple: 0 0 20px rgba(191, 0, 255, 0.5), 0 0 60px rgba(191, 0, 255, 0.2);
+   }
+   
+   /* ─── NAVBAR BASE ─── */
+   .navbar-galaxy {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     z-index: 9999;
+     padding: 0;
+     font-family: 'Rajdhani', sans-serif;
+     animation: navSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+   }
+   
+   @keyframes navSlideIn {
+     from { transform: translateY(-100%); opacity: 0; }
+     to   { transform: translateY(0);     opacity: 1; }
+   }
+   
+   /* ─── SCANLINE OVERLAY ─── */
+   .navbar-galaxy::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: repeating-linear-gradient(
+       0deg,
+       transparent,
+       transparent 2px,
+       rgba(0, 245, 255, 0.015) 2px,
+       rgba(0, 245, 255, 0.015) 4px
+     );
+     pointer-events: none;
+     z-index: 0;
+   }
+   
+   /* ─── MAIN GLASS STRIP ─── */
+   .navbar-inner {
+     background: linear-gradient(
+       135deg,
+       rgba(0, 245, 255, 0.04) 0%,
+       rgba(2, 4, 8, 0.85) 40%,
+       rgba(191, 0, 255, 0.04) 100%
+     );
+     backdrop-filter: blur(24px) saturate(180%);
+     -webkit-backdrop-filter: blur(24px) saturate(180%);
+     border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+     box-shadow:
+       0 1px 0 rgba(0, 245, 255, 0.3),
+       0 4px 40px rgba(0, 0, 0, 0.6),
+       inset 0 1px 0 rgba(255, 255, 255, 0.05);
+     position: relative;
+     z-index: 1;
+   }
+   
+   /* ─── TOP ACCENT LINE (animated) ─── */
+   .navbar-inner::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 1px;
+     background: linear-gradient(
+       90deg,
+       transparent 0%,
+       var(--neon-cyan) 20%,
+       var(--neon-purple) 50%,
+       var(--neon-pink) 80%,
+       transparent 100%
+     );
+     background-size: 200% 100%;
+     animation: scanLine 4s linear infinite;
+   }
+   
+   @keyframes scanLine {
+     0%   { background-position: -100% 0; }
+     100% { background-position: 200% 0; }
+   }
+   
+   /* ─── CONTAINER ─── */
+   .navbar-container {
+     max-width: 1400px;
+     margin: 0 auto;
+     padding: 0.85rem 2rem;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 2rem;
+   }
+   
+   /* ═══════════════════════════════
+      LOGO
+   ═══════════════════════════════ */
+   .logo-galaxy {
+     display: flex;
+     align-items: center;
+     gap: 0.75rem;
+     text-decoration: none;
+     position: relative;
+     padding: 0.5rem 1.25rem 0.5rem 0.75rem;
+     border-radius: 4px;
+     transition: all 0.4s ease;
+   }
+   
+   /* Corner brackets */
+   .logo-galaxy::before,
+   .logo-galaxy::after {
+     content: '';
+     position: absolute;
+     width: 12px;
+     height: 12px;
+     transition: all 0.3s ease;
+   }
+   
+   .logo-galaxy::before {
+     top: 0; left: 0;
+     border-top: 2px solid var(--neon-cyan);
+     border-left: 2px solid var(--neon-cyan);
+   }
+   
+   .logo-galaxy::after {
+     bottom: 0; right: 0;
+     border-bottom: 2px solid var(--neon-purple);
+     border-right: 2px solid var(--neon-purple);
+   }
+   
+   .logo-galaxy:hover::before {
+     width: 20px; height: 20px;
+     box-shadow: var(--glow-cyan);
+   }
+   
+   .logo-galaxy:hover::after {
+     width: 20px; height: 20px;
+     box-shadow: var(--glow-purple);
+   }
+   
+   .logo-icon-wrap {
+     position: relative;
+     width: 42px;
+     height: 42px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   
+   /* Spinning ring around logo icon */
+   .logo-icon-wrap::before {
+     content: '';
+     position: absolute;
+     inset: -4px;
+     border-radius: 50%;
+     border: 1px solid transparent;
+     border-top-color: var(--neon-cyan);
+     border-right-color: var(--neon-purple);
+     animation: spinRing 3s linear infinite;
+   }
+   
+   @keyframes spinRing {
+     to { transform: rotate(360deg); }
+   }
+   
+   .logo-emoji {
+     font-size: 1.6rem;
+     filter: drop-shadow(0 0 8px var(--neon-cyan));
+     animation: floatIcon 3s ease-in-out infinite;
+     z-index: 1;
+   }
+   
+   @keyframes floatIcon {
+     0%, 100% { transform: translateY(0); }
+     50%       { transform: translateY(-4px); }
+   }
+   
+   .logo-text-wrap {
+     display: flex;
+     flex-direction: column;
+     line-height: 1;
+   }
+   
+   .logo-main {
+     font-family: 'Orbitron', monospace;
+     font-size: 1.25rem;
+     font-weight: 900;
+     letter-spacing: 0.1em;
+     background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+     text-shadow: none;
+     filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.6));
+     text-transform: uppercase;
+   }
+   
+   .logo-sub {
+     font-family: 'Rajdhani', sans-serif;
+     font-size: 0.6rem;
+     letter-spacing: 0.3em;
+     color: rgba(0, 245, 255, 0.5);
+     text-transform: uppercase;
+     margin-top: 2px;
+   }
+   
+   
+   /* ═══════════════════════════════
+      NAV LINKS
+   ═══════════════════════════════ */
+   .nav-links-galaxy {
+     display: flex;
+     align-items: center;
+     gap: 0.35rem;
+     list-style: none;
+     margin: 0;
+     padding: 0;
+   }
+   
+   /* ─── BASE NAV LINK ─── */
+   .nav-link-galaxy {
+     display: flex;
+     align-items: center;
+     gap: 0.45rem;
+     padding: 0.55rem 1rem;
+     text-decoration: none;
+     font-family: 'Rajdhani', sans-serif;
+     font-size: 0.9rem;
+     font-weight: 600;
+     letter-spacing: 0.08em;
+     text-transform: uppercase;
+     color: rgba(200, 220, 255, 0.75);
+     border-radius: 3px;
+     position: relative;
+     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+     overflow: hidden;
+     background: transparent;
+     border: 1px solid transparent;
+   }
+   
+   /* Bottom neon underline */
+   .nav-link-galaxy::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     width: 0;
+     height: 1px;
+     background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+     transform: translateX(-50%);
+     transition: width 0.3s ease;
+     box-shadow: var(--glow-cyan);
+   }
+   
+   /* Sweep shimmer on hover */
+   .nav-link-galaxy::before {
+     content: '';
+     position: absolute;
+     top: 0; left: -100%;
+     width: 100%; height: 100%;
+     background: linear-gradient(
+       90deg,
+       transparent,
+       rgba(0, 245, 255, 0.08),
+       transparent
+     );
+     transition: left 0.5s ease;
+   }
+   
+   .nav-link-galaxy:hover {
+     color: var(--neon-cyan);
+     border-color: rgba(0, 245, 255, 0.2);
+     background: rgba(0, 245, 255, 0.05);
+     transform: translateY(-1px);
+     text-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+   }
+   
+   .nav-link-galaxy:hover::after {
+     width: 80%;
+   }
+   
+   .nav-link-galaxy:hover::before {
+     left: 100%;
+   }
+   
+   .nav-icon {
+     font-size: 1rem;
+     z-index: 1;
+     position: relative;
+   }
+   
+   .nav-label {
+     z-index: 1;
+     position: relative;
+   }
+   
+   /* ─── PROFILE LINK ─── */
+   .nav-link-profile {
+     background: linear-gradient(
+       135deg,
+       rgba(0, 245, 255, 0.08),
+       rgba(191, 0, 255, 0.08)
+     );
+     border: 1px solid rgba(0, 245, 255, 0.25);
+     color: var(--neon-cyan);
+   }
+   
+   .nav-link-profile:hover {
+     background: linear-gradient(
+       135deg,
+       rgba(0, 245, 255, 0.15),
+       rgba(191, 0, 255, 0.15)
+     );
+     box-shadow: var(--glow-cyan);
+   }
+   
+   /* ─── LOGIN BUTTON ─── */
+   .btn-login-galaxy {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+     padding: 0.55rem 1.25rem;
+     text-decoration: none;
+     font-family: 'Rajdhani', sans-serif;
+     font-size: 0.9rem;
+     font-weight: 700;
+     letter-spacing: 0.12em;
+     text-transform: uppercase;
+     color: var(--neon-cyan);
+     border-radius: 3px;
+     border: 1px solid rgba(0, 245, 255, 0.4);
+     background: rgba(0, 245, 255, 0.05);
+     position: relative;
+     overflow: hidden;
+     transition: all 0.3s ease;
+   }
+   
+   .btn-login-galaxy::before {
+     content: '';
+     position: absolute;
+     top: 0; left: -100%;
+     width: 100%; height: 100%;
+     background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.15), transparent);
+     transition: left 0.5s;
+   }
+   
+   .btn-login-galaxy:hover {
+     background: rgba(0, 245, 255, 0.12);
+     border-color: var(--neon-cyan);
+     box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 245, 255, 0.05);
+     transform: translateY(-2px);
+     text-shadow: 0 0 10px var(--neon-cyan);
+   }
+   
+   .btn-login-galaxy:hover::before {
+     left: 100%;
+   }
+   
+   /* ─── REGISTER BUTTON ─── */
+   .btn-register-galaxy {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+     padding: 0.55rem 1.4rem;
+     text-decoration: none;
+     font-family: 'Orbitron', monospace;
+     font-size: 0.75rem;
+     font-weight: 700;
+     letter-spacing: 0.15em;
+     text-transform: uppercase;
+     color: #fff;
+     border-radius: 3px;
+     border: 1px solid rgba(191, 0, 255, 0.5);
+     background: linear-gradient(
+       135deg,
+       rgba(191, 0, 255, 0.25) 0%,
+       rgba(0, 102, 255, 0.25) 100%
+     );
+     position: relative;
+     overflow: hidden;
+     transition: all 0.3s ease;
+     box-shadow: 0 0 20px rgba(191, 0, 255, 0.2);
+   }
+   
+   /* Animated gradient shift */
+   .btn-register-galaxy::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue), var(--neon-pink));
+     background-size: 200% 200%;
+     opacity: 0;
+     transition: opacity 0.3s ease;
+     animation: gradientShift 3s ease infinite;
+   }
+   
+   @keyframes gradientShift {
+     0%   { background-position: 0% 50%; }
+     50%  { background-position: 100% 50%; }
+     100% { background-position: 0% 50%; }
+   }
+   
+   .btn-register-galaxy:hover::before {
+     opacity: 0.4;
+   }
+   
+   .btn-register-galaxy:hover {
+     transform: translateY(-2px) scale(1.03);
+     box-shadow: var(--glow-purple), 0 8px 30px rgba(191, 0, 255, 0.4);
+     border-color: var(--neon-purple);
+   }
+   
+   .btn-register-galaxy span {
+     position: relative;
+     z-index: 1;
+   }
+   
+   /* ─── LOGOUT BUTTON ─── */
+   .btn-logout-galaxy {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+     padding: 0.55rem 1.1rem;
+     font-family: 'Rajdhani', sans-serif;
+     font-size: 0.9rem;
+     font-weight: 700;
+     letter-spacing: 0.1em;
+     text-transform: uppercase;
+     color: rgba(255, 80, 80, 0.85);
+     border-radius: 3px;
+     border: 1px solid rgba(255, 60, 60, 0.3);
+     background: rgba(255, 0, 0, 0.05);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .btn-logout-galaxy:hover {
+     color: #ff4444;
+     background: rgba(255, 0, 0, 0.1);
+     border-color: rgba(255, 60, 60, 0.6);
+     box-shadow: 0 0 20px rgba(255, 0, 0, 0.3), 0 0 60px rgba(255, 0, 0, 0.1);
+     transform: translateY(-1px);
+     text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+   }
+   
+   /* ─── SCROLLED STATE ─── */
+   .navbar-galaxy.scrolled .navbar-inner {
+     background: linear-gradient(
+       135deg,
+       rgba(0, 245, 255, 0.06) 0%,
+       rgba(2, 4, 8, 0.95) 40%,
+       rgba(191, 0, 255, 0.06) 100%
+     );
+     box-shadow:
+       0 1px 0 rgba(0, 245, 255, 0.4),
+       0 8px 60px rgba(0, 0, 0, 0.8),
+       inset 0 1px 0 rgba(255, 255, 255, 0.05);
+   }
+   
+   /* ─── DIVIDER ─── */
+   .nav-divider {
+     width: 1px;
+     height: 24px;
+     background: linear-gradient(180deg, transparent, rgba(0, 245, 255, 0.3), transparent);
+     margin: 0 0.25rem;
+   }
+   
+   /* ═══════════════════════════════
+      RESPONSIVE
+   ═══════════════════════════════ */
+   @media (max-width: 1024px) {
+     .navbar-container { padding: 0.75rem 1.25rem; }
+     .nav-links-galaxy { gap: 0.2rem; }
+     .nav-link-galaxy  { padding: 0.5rem 0.75rem; font-size: 0.82rem; }
+     .logo-main        { font-size: 1rem; }
+   }
+   
+   @media (max-width: 768px) {
+     .navbar-container {
+       flex-direction: column;
+       gap: 0.75rem;
+       padding: 0.75rem 1rem;
+     }
+     .nav-links-galaxy {
+       flex-wrap: wrap;
+       justify-content: center;
+     }
+     .logo-sub { display: none; }
+   }
