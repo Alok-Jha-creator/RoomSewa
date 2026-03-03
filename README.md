@@ -5,7 +5,8 @@ RoomSewa - Nepal Room Rental Platform. Full-stack MERN app with JWT auth, Cloudi
 
 A full-stack MERN (MongoDB, Express.js, React, Node.js) web application for room and property rentals in Nepal. Features include real-time chat, admin panel, booking system, and modern glassmorphism UI.
 
-![RoomSewa Banner](https://via.placeholder.com/1200x400/0a0e27/00f5ff?text=RoomSewa+-+Find+Your+Perfect+Room)
+<img width="1356" height="638" alt="image" src="https://github.com/user-attachments/assets/50b3fb1e-cdaf-4232-b0cb-57ca2c44cdf2" />
+
 
 ---
 
@@ -111,16 +112,24 @@ npm run dev
 ## 📸 Screenshots
 
 ### Home Page
-![Home](https://via.placeholder.com/800x400/0a0e27/00f5ff?text=Home+Page)
+![Home] <img width="1353" height="637" alt="image" src="https://github.com/user-attachments/assets/9e798ad7-019f-4795-8d9e-95c73deb6cd9" />
+<img width="1356" height="639" alt="image" src="https://github.com/user-attachments/assets/e92a0e1d-9276-4ef8-9362-453966d323e1" />
+<img width="1355" height="643" alt="image" src="https://github.com/user-attachments/assets/2ef26333-e39c-46ba-992e-4ca426928a1c" />
+
+
+
 
 ### Property Listings
-![Properties](https://via.placeholder.com/800x400/0a0e27/00f5ff?text=Property+Listings)
+![Properties]<img width="1357" height="636" alt="image" src="https://github.com/user-attachments/assets/f13e3521-48c9-41ca-b46c-8c7972c2d961" />
+<img width="1357" height="640" alt="image" src="https://github.com/user-attachments/assets/2837be45-4f78-4433-beb2-ac01612bbbfd" />
+
 
 ### Real-time Chat
 ![Chat](https://via.placeholder.com/800x400/0a0e27/00f5ff?text=Real-time+Chat)
 
 ### Admin Dashboard
-![Admin](https://via.placeholder.com/800x400/0a0e27/00f5ff?text=Admin+Dashboard)
+<img width="1353" height="636" alt="image" src="https://github.com/user-attachments/assets/e35a76ef-ae9e-40ce-8c5a-5878b1588e46" />
+
 
 ---
 
