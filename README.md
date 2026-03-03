@@ -226,8 +226,8 @@ This project is open source and available under the [MIT License](LICENSE).
 **Alok Jha**
 
 - GitHub: [@Alok-Jha-creator](https://github.com/Alok-Jha-creator)
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/alok-jha-83810a3a0/)
+- Email: ajha49993@gmail.com
 
 ---
 
